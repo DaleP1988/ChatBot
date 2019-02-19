@@ -1,26 +1,26 @@
 import React from "react";
 import {
-  StyleSheet,
   Text,
+  View,
+  StyleSheet,
   TextInput,
-  TouchableOpacity,
-  View
+  TouchableOpacity
 } from "react-native";
 
 import { Actions } from "react-native-router-flux";
 
-export default class Home extends React.Component {
+class Home extends React.Component {
   state = {
     name: ""
   };
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={[styles.label, { marginTop: 40 }]}>Enter your name :</Text>
+      <View>
+        <Text style={styles.title}>Enter Your Name:</Text>
         <TextInput
-          placeholder="John Smith"
-          style={styles.textInput}
-          onChangeText={text => {
+          style={styles.nameInput}
+          placeholder="John Snow"
+          onChangeTex={text => {
             this.setState({
               name: text
             });
@@ -32,25 +32,85 @@ export default class Home extends React.Component {
             Actions.chat({
               name: this.state.name
             });
+            //run by using
+            // console.log("it worked");
+            // debugger;
+            // alert(this.state.name);
+            //navigate to the second screen
           }}
         >
-          <Text style={styles.label}>Next</Text>
+          <Text style={styles.buttonText}>Next</Text>
         </TouchableOpacity>
+        >
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
+var styles = StyleSheet.create({
+  title: {
+    marginTop: 20,
+    marginLeft: 20,
+    fontSize: 20
   },
-  label: {
-    fontSize: 20,
-    marginLeft: 15
-  },
-  textInput: {
+  nameInput: {
     height: 40,
-    marginLeft: 15
+    borderWidth: 2,
+    borderColor: "black",
+    paddingTop: ""
+  },
+  buttonText: {
+    marginLeft: 20,
+    fontSize: 14
   }
 });
+
+export default Home;
+
+// import { Actions } from "react-native-router-flux";
+
+// export default class Home extends React.Component {
+//   state = {
+//     name: ""
+//   };
+//   render() {
+//     return (
+//       <View style={styles.container}>
+//         <Text style={[styles.label, { marginTop: 40 }]}>Enter your name :</Text>
+//         <TextInput
+//           placeholder="John Smith"
+//           style={styles.textInput}
+//           onChangeText={text => {
+//             this.setState({
+//               name: text
+//             });
+//           }}
+//           value={this.state.name}
+//         />
+//         <TouchableOpacity
+//           onPress={() => {
+//             Actions.chat({
+//               name: this.state.name
+//             });
+//           }}
+//         >
+//           <Text style={styles.label}>Next</Text>
+//         </TouchableOpacity>
+//       </View>
+//     );
+//   }
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1
+//   },
+//   label: {
+//     fontSize: 20,
+//     marginLeft: 15
+//   },
+//   textInput: {
+//     height: 40,
+//     marginLeft: 15
+//   }
+// });
